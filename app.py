@@ -226,18 +226,23 @@ def main():
     ]
     
     # Create elegant photo grid
+    # [Previous imports and style definitions remain the same until the image display part]
+
+    # Create elegant photo grid
     cols = st.columns(3)
     for i in range(5):
         with cols[i % 3]:
             try:
                 img = Image.open(f"pic{i+1}.jpg")
                 st.markdown('<div class="photo-frame">', unsafe_allow_html=True)
-                st.image(img, use_column_width=True)
+                st.image(img, use_container_width=True)  # Updated parameter here
                 st.markdown('</div>', unsafe_allow_html=True)
                 st.markdown(f'<p class="image-caption">{photo_captions[i]}</p>', 
                           unsafe_allow_html=True)
             except Exception as e:
                 st.error(f"Please add pic{i+1}.jpg to your project directory")
+
+# [Rest of the code remains the same]
     
     # Romantic Quote
     st.markdown(f"""
